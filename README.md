@@ -16,7 +16,6 @@ The executable supports the following command-line flags, all of which are optio
 - -o specifies output file name (must end with .csv or .json, defaults to data.csv)
 - -v displays the version number
 - -q displays the query used
-- -u displays unused VersionOne stages
 - -h displays help (this list)
 
 For example, to run the Linux version using a config file named myconfig.yaml and creating mydata.csv:
@@ -64,16 +63,16 @@ Connection:
 ### The Criteria Section ###
 The Criteria Section of the config file is simply named "Criteria" (without the quotes) and contains optional VersionOne attributes that can use to control your data set. Each line in this section contains the name of the VersionOne attribute you want in your data followed by a colon (:) followed by its corresponding value in your VersionOne instance.  The fields in this section that we support are:
 
-- 	Projects: a comma-separated list of the names of the VersionOne Projects you are querying
-- 	Types: a comma-separated list of the names of the VersionOne issuetypes you want to extract
-- 	Filters: a comma-separated list of the names of the filters you want to apply
+- 	Scopes: a comma-separated list of the names of the VersionOne scopes you are querying
+- 	Timeboxes: a comma-separated list of the names of the VersionOne timeboxes
+- 	Themes: a comma-separated list of the VersionOne themes
 
 An example of what this section might look like would be:
 
 Criteria:  
-&nbsp;&nbsp;&nbsp;&nbsp;Project: My Project1, My Project2  
-&nbsp;&nbsp;&nbsp;&nbsp;Filters: Filter1, Filter2  
-&nbsp;&nbsp;&nbsp;&nbsp;Types: Epic, User Story
+&nbsp;&nbsp;&nbsp;&nbsp;Scopes: My Project1, My Project2  
+&nbsp;&nbsp;&nbsp;&nbsp;Timeboxes: My Timebox
+&nbsp;&nbsp;&nbsp;&nbsp;Themes: Epic, User Story, Defect
 
 **NOTE**:  The fields in this section are optional
 
@@ -112,23 +111,16 @@ In the returned JSON, a custom field may contain a single string, a struct, an a
 If the returned JSON contains an array, the content of each element is extracted normally. If there are multiple non-empty values, all the values are joined with an escaped comma and surrounded by square brackets like this: [red\,green\,blue]
 
 Here are the standard VersionOne fields that you can use:  
--  status
--  issuetype
--  priority
--  resolution
--  project
--  labels
--  fixVersions
--  components
+-  Scope
+-  Timebox
+-  Theme
 
 An example of what this section might look like is:
 
 Attributes:  
-&nbsp;&nbsp;&nbsp;&nbsp;Team: customfield_10000  
-&nbsp;&nbsp;&nbsp;&nbsp;Regulatory Requirement: customfield_10001  
-&nbsp;&nbsp;&nbsp;&nbsp;Status: status  
-&nbsp;&nbsp;&nbsp;&nbsp;Type: issuetype  
-&nbsp;&nbsp;&nbsp;&nbsp;Level: priority  
+&nbsp;&nbsp;&nbsp;&nbsp;Project: Scope
+&nbsp;&nbsp;&nbsp;&nbsp;Range: Timebox
+&nbsp;&nbsp;&nbsp;&nbsp;Topic: Theme
 
 These fields will show up as filter attributes in the generated data file (please visit [https://www.actionableagile.com/format-data-file/](https://www.actionableagile.com/format-data-file/) for more information).
 
