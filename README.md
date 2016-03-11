@@ -71,8 +71,8 @@ An example of what this section might look like would be:
 
 Criteria:  
 &nbsp;&nbsp;&nbsp;&nbsp;Scopes: My Project1, My Project2  
-&nbsp;&nbsp;&nbsp;&nbsp;Timeboxes: My Timebox
-&nbsp;&nbsp;&nbsp;&nbsp;Themes: Epic, User Story, Defect
+&nbsp;&nbsp;&nbsp;&nbsp;Timeboxes: My Timebox  
+&nbsp;&nbsp;&nbsp;&nbsp;Themes: Epic, User Story, Defect  
 
 **NOTE**:  The fields in this section are optional
 
@@ -110,7 +110,8 @@ In the returned JSON, a custom field may contain a single string, a struct, an a
 
 If the returned JSON contains an array, the content of each element is extracted normally. If there are multiple non-empty values, all the values are joined with an escaped comma and surrounded by square brackets like this: [red\,green\,blue]
 
-Here are the standard VersionOne fields that you can use:  
+Here are the standard VersionOne fields that you can use:
+
 -  Scope
 -  Timebox
 -  Theme
@@ -118,8 +119,8 @@ Here are the standard VersionOne fields that you can use:
 An example of what this section might look like is:
 
 Attributes:  
-&nbsp;&nbsp;&nbsp;&nbsp;Project: Scope
-&nbsp;&nbsp;&nbsp;&nbsp;Range: Timebox
+&nbsp;&nbsp;&nbsp;&nbsp;Project: Scope  
+&nbsp;&nbsp;&nbsp;&nbsp;Range: Timebox  
 &nbsp;&nbsp;&nbsp;&nbsp;Topic: Theme
 
 These fields will show up as filter attributes in the generated data file (please visit [https://www.actionableagile.com/format-data-file/](https://www.actionableagile.com/format-data-file/) for more information).
@@ -127,7 +128,7 @@ These fields will show up as filter attributes in the generated data file (pleas
 **NOTE**:  None of the fields in this section is required--in fact, this section as a whole is optional.
 
 ## EXTRACTION PROCEDURE ##
-The program will read in the properly formatted config file (see The Config File section above) and attempt to connect to VersionOne using the url and authentication parameters specified (or will prompt you for a password if you did not specify one).  When a connection is established, the software will extract data using VersionOne’s REST API according to the parameters specified in the config file.  REST calls are “batched” so as to stay under VersionOne’s “maxResult” size limit as well as to minimize the chances of server timeout errors when retrieving large datasets.  If a non-fatal error is encountered, the extraction program will retry up to five time before terminating.  The program ignores any VersionOne issue types that have workflow stages not specified in the config and it handles VersionOne issues that have moved backward and forward through the workflow.
+The program will read in the properly formatted config file (see The Config File section above) and attempt to connect to VersionOne using the url and authentication parameters specified (or will prompt you for a password if you did not specify one). When a connection is established, the software will extract data using VersionOne’s REST API according to the parameters specified in the config file. REST calls are “batched” so as to stay under VersionOne’s “maxResult” size limit as well as to minimize the chances of server timeout errors when retrieving large datasets. If a non-fatal error is encountered, the extraction program will retry up to five time before terminating. The program ignores any VersionOne issue types that have workflow stages not specified in the config and it handles VersionOne issues that have moved backward and forward through the workflow.
 If all goes well, the extraction program will write out a CSV or JSON file that contains all extracted data to the same directory where the program is running.
 
 ## THE OUTPUT FILE ##
@@ -138,11 +139,11 @@ If the output file is a CSV file, it can be loaded directly into the ActionableA
 If the output file is a JSON file, it can be loaded with Analytics via the URL parameter url=your-url/filename.json. For example, if you are hosting Analytics from www.mysite.com/Analytics and the JSON file is named data.json in the same directory as Analytics, the full url would be www.mysite.com/Analytics?url=data.json or www.mysite.com/Analytics?url=www.mysite.com/data.json. If you are using the SaaS version of Analytics from https://www.actionableagile.com and want to serve the JSON file from your own website, you must enable Cross-Origin Resource Sharing (CORS) for the URLs that serve your JSON.
 
 ## INFO FOR WINDOWS USERS ##
-Download v1_to_analytics.win64.exe and config.yaml from the releases page on github ([https://github.com/actionableagile/v1-to-analytics/releases](https://github.com/actionableagile/v1-to-analytics/releases)) and put both files in the same directory.  Which directory you choose doesn’t matter as long as they are co-located.  Edit the config file and customize it for your specific VersionOne instance according to the instructions in this README.  You can either launch the exe by double clicking it in an explorer view or open a command prompt and run it from there.  If running from a command prompt simply type the name of the exe in and hit enter (no additional command line parameters are needed).  If the program succeeds, the output data file will be written in the same directory as the exe.
+Download v1_to_analytics.win64.exe and config.yaml from the releases page on github ([https://github.com/actionableagile/v1-to-analytics/releases](https://github.com/actionableagile/v1-to-analytics/releases)) and put both files in the same directory. Which directory you choose doesn’t matter as long as they are co-located. Edit the config file and customize it for your specific VersionOne instance according to the instructions in this README. You can either launch the exe by double clicking it in an explorer view or open a command prompt and run it from there. If running from a command prompt simply type the name of the exe in and hit enter (no additional command line parameters are needed). If the program succeeds, the output data file will be written in the same directory as the exe.
 
 ## INFO FOR LINUX USERS ##
-Download v1_to_analytics.linux64 and config.yaml from the releases page on github ([https://github.com/actionableagile/v1-to-analytics/releases](https://github.com/actionableagile/v1-to-analytics/releases)) and put both files in the same directory.  Which directory you choose doesn’t matter as long as they are co-located. Edit the config file and customize it for your specific VersionOne instance according to the instructions in this README.  Open a terminal and cd to the directory containing the files. Make the linux64 file executable by typing chmod u+x v1_to_analytics.linux64. Run it by typing ./v1_to_analytics.linux64. If the program succeeds, the output data file will be written in the same directory as the executable.
+Download v1_to_analytics.linux64 and config.yaml from the releases page on github ([https://github.com/actionableagile/v1-to-analytics/releases](https://github.com/actionableagile/v1-to-analytics/releases)) and put both files in the same directory. Which directory you choose doesn’t matter as long as they are co-located. Edit the config file and customize it for your specific VersionOne instance according to the instructions in this README. Open a terminal and cd to the directory containing the files. Make the linux64 file executable by typing chmod u+x v1_to_analytics.linux64. Run it by typing ./v1_to_analytics.linux64. If the program succeeds, the output data file will be written in the same directory as the executable.
 
 ## INFO FOR MAC USERS ##
-Download v1_to_analytics.mac64 and config.yaml from the releases page on github ([https://github.com/actionableagile/v1-to-analytics/releases](https://github.com/actionableagile/v1-to-analytics/releases)) and put both files in the same directory.  Which directory you choose doesn’t matter as long as they are co-located. Edit the config file and customize it for your specific VersionOne instance according to the instructions in this README.  Open a terminal and cd to the directory containing the files. Make the mac64 file executable by typing chmod u+x v1_to_analytics.mac64. Run it by typing ./v1_to_analytics.mac64. If the program succeeds, the output data file will be written in the same directory as the executable.
+Download v1_to_analytics.mac64 and config.yaml from the releases page on github ([https://github.com/actionableagile/v1-to-analytics/releases](https://github.com/actionableagile/v1-to-analytics/releases)) and put both files in the same directory. Which directory you choose doesn’t matter as long as they are co-located. Edit the config file and customize it for your specific VersionOne instance according to the instructions in this README. Open a terminal and cd to the directory containing the files. Make the mac64 file executable by typing chmod u+x v1_to_analytics.mac64. Run it by typing ./v1_to_analytics.mac64. If the program succeeds, the output data file will be written in the same directory as the executable.
 
