@@ -1,0 +1,2 @@
+#!/bin/bash
+GOOS=darwin GOARCH=amd64 go build -o v1_to_analytics.mac64 config.go items.go password_unix.go main_standalone.go

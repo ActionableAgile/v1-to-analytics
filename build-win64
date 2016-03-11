@@ -1,0 +1,2 @@
+#!/bin/bash
+GOOS=windows GOARCH=amd64 go build -o v1_to_analytics.win64.exe config.go items.go password_windows.go main_standalone.go

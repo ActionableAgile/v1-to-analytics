@@ -1,0 +1,2 @@
+#!/bin/bash
+rm -f v1_to_analytics.linux64 v1_to_analytics.mac64 v1_to_analytics.win64.exe v1.cgi

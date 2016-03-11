@@ -1,0 +1,5 @@
+#!/bin/bash
+./build-cgi
+./build-linux
+./build-mac
+./build-win64
