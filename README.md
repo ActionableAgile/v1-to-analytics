@@ -34,10 +34,10 @@ The config file we use conforms to the YAML format standard (http://yaml.org/spe
 
 The file itself is broken up into the four sections:  
 
-Connection  
-Criteria  
-Workflow  
-Attributes  
+- 	Connection  
+- 	Criteria  
+- 	Workflow  
+- 	Attributes  
 
 ### The Connection Section ###
 The Connection Section of the config file is simply named "Connection" (without the quotes).  Each line of the this section contains the name of a connection property followed by a colon (:) followed by the required value.  This section has two required fields:
@@ -79,7 +79,7 @@ Criteria:
 ### The Workflow Section ###
 The Workflow Section of the config file is simply named "Workflow" (without the quotes) and contains all the information needed to configure your workflow data.  Each line of the this section contains the name of the workflow column as you want it to appear in the data file, followed by a colon (:) followed by a comma-separated list of all the VersionOne statuses that you want to map to that column.  For example, a row in your Workflow section that looks like:
 
-Dev: Development Active, Development Done, Staging
+&nbsp;&nbsp;&nbsp;&nbsp;Dev: Development Active, Development Done, Staging
 
 will tell the software to look for the VersionOne statuses "Development Active", "Development Done", and "Staging" and map those statuses to a column in the output data file called "Dev".  The simplest form of this section is to have a one-to-one mapping of all VersionOne statuses to a corresponding column name in the data file.  For example, assume your VersionOne workflow is ToDo, Doing, Done.  Then a simple Workflow section of the config file that produces a data file that captures each of those statuses in a respectively named column would be:
 
